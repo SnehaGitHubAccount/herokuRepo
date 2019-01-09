@@ -32,7 +32,7 @@ final BasicDataSource connectionPool;
 	{
 		String query="select * from public.product_details";
 		//String query="select * from product.product_details";
-		String query1="select * from salesforce.product_data__c";
+		
 		URI dbUri = new URI(System.getenv("DATABASE_URL"));
 		  String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + dbUri.getPath();
 		  connectionPool = new BasicDataSource();
@@ -69,6 +69,7 @@ final BasicDataSource connectionPool;
 	
 %>
 <%
+String query1="select product_id__c, product_name__c, price__c from salesforce.product_data__c";
 ResultSet rs1=stmt.executeQuery(query1);
 while(rs1.next())
 {
@@ -76,22 +77,16 @@ while(rs1.next())
 %>
     <tr>
 	   <td><input type="checkbox" name="p_check"/></td>
-	   <td><input type="text" name="p_id" value="<%out.print(rs1.getString("product_id"));%>" /></td>
-	   <td><input type="text" name="p_name" value="<%out.print(rs1.getString("product_name"));%>" /></td>
-	   <td><input type="text" name="p_price" value="<%out.print(rs1.getInt("price"));%>" /></td>
+	   <td><input type="text" name="p_id" value="<%out.print(rs1.getString("product_id__C"));%>" /></td>
+	   <td><input type="text" name="p_name" value="<%out.print(rs1.getString("product_name__C"));%>" /></td>
+	   <td><input type="text" name="p_price" value="<%out.print(rs1.getInt("price__C"));%>" /></td>
 	   <td><input type="text" name="p_quant" /></td>
 	   </tr>
-   
-   
    
     <%
 }
 
-
-%>
-
-
- 
+%> 
  </table>
 
     <input type="submit" value="Proceed" name="process"/>
