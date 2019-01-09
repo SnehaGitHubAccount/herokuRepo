@@ -62,7 +62,7 @@ final BasicDataSource connectionPool;
        
         <%
 }
-	rs=stmt.executeQuery(query);
+	rs=stmt.executeQuery(query1);
 	
 %>
  <tr>
