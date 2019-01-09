@@ -111,7 +111,7 @@ public class Calculate extends HttpServlet {
 			  System.out.println("In try");
 			  
 			System.out.println("done connection");
-			String insertTableSQL = "INSERT INTO product.product_entry (product_name,quantity,total_cost) VALUES(?,?,?)";
+			String insertTableSQL = "INSERT INTO public.product_entry (product_name,quantity,total_cost) VALUES(?,?,?)";
 			PreparedStatement preparedStatement = connection.prepareStatement(insertTableSQL);
 			
 			for (int i=0; i<products.length; i++)

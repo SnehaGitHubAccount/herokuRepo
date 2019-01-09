@@ -30,7 +30,7 @@
 final BasicDataSource connectionPool;
 	try
 	{
-		String query="select * from product.product_details";
+		String query="select * from public.product_details";
 		//String query="select * from product.product_details";
 		String query1="select * from salesforce.product_data__c";
 		URI dbUri = new URI(System.getenv("DATABASE_URL"));
