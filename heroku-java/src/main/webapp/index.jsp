@@ -48,7 +48,7 @@ final BasicDataSource connectionPool;
 		  Connection connection = connectionPool.getConnection();
 		Statement stmt=connection.createStatement();
 		ResultSet rs=stmt.executeQuery(query);
-		ResultSet rs1=stmt.executeQuery(query1);
+		//ResultSet rs1=stmt.executeQuery(query1);
 	while(rs.next())
 {
 
@@ -68,15 +68,32 @@ final BasicDataSource connectionPool;
 	
 	
 %>
- 
- </table>
- <tr>
+<%
+ResultSet rs1=stmt.executeQuery(query1);
+while(rs1.next())
+{
+
+%>
+    <tr>
 	   <td><input type="checkbox" name="p_check"/></td>
-	   <td><input type="text" name="p_id" value="<%out.print(rs.getString("product_id"));%>" /></td>
-	   <td><input type="text" name="p_name" value="<%out.print(rs.getString("product_name"));%>" /></td>
-	   <td><input type="text" name="p_price" value="<%out.print(rs.getInt("price"));%>" /></td>
+	   <td><input type="text" name="p_id" value="<%out.print(rs1.getString("product_id"));%>" /></td>
+	   <td><input type="text" name="p_name" value="<%out.print(rs1.getString("product_name"));%>" /></td>
+	   <td><input type="text" name="p_price" value="<%out.print(rs1.getInt("price"));%>" /></td>
 	   <td><input type="text" name="p_quant" /></td>
 	   </tr>
+   
+   
+   
+    <%
+}
+
+
+%>
+
+
+ 
+ </table>
+
     <input type="submit" value="Proceed" name="process"/>
     <%
     
